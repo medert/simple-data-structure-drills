@@ -64,34 +64,43 @@ best_records = {
 # Write Ruby code to find out the answers to the following questions:
 
 # * How many records are in `best_records`?
-puts "Total records:"
+puts "Total records: #{best_records.values.size}"
 
 # * Who are all the artists listed?
-puts "All of the artists:"
+puts "All of the artists: #{best_records.keys.join(', ')}"
 
 # * What are all the album names in the hash?
-puts "All of the albums:"
+puts "All of the albums: #{best_records.values.join(', ')}"
 
 # * Delete the `Eminem` key-value pair from the list and print an updated list of just the artists.
-puts "List of artists with Eminem deleted:"
+
+puts "List of artists with Eminem deleted: #{best_records.reject!{|k,v| k == 'Eminem'}.keys.join(', ')}"
 
 # * Add your favorite musician and their best album to the list and print an updated list of all the artists and albums:
-puts "My favorite musician added:"
+best_records['Britney Spears'] = 'Oops, i did it again!'
+puts "My favorite musician added: #{best_records.invert['Oops, i did it again!']}"
+
 
 # * True or False: `Nirvana` is included in `best_records`
-puts "True or False: `Nirvana` is included:"
+puts "True or False: `Nirvana` is included: #{best_records.include?('Nirvana')}"
 
 
 # * Change `Nirvana`'s album to another and then print the updated list of Artists and Albums.
-puts "Nirvana's album updated:"
+best_records['Nirvana'] = 'Glory'
+puts "Nirvana's album updated: #{best_records['Nirvana']}"
 
 # * True or False: `Soundgarden` is included in `best_records`?
-puts "True or False: `Soundgarden` is included:"
+puts "True or False: `Soundgarden` is included: #{best_records.include?('Soundgarden')}"
 
 # * If `Soundgarden` is not in `best_records` then add a key-value pair for the band and then print the updated list of Artists and Albums.
-puts "Soundgarden added if it's not already there:"
+if !best_records.include?('Soundgarden')
+  best_records['Soundgarden'] = 'Best'
+end
+puts "Soundgarden added if it's not already there: #{best_records}"
 
 # * Which key-value pairs have a key that has a length less than or equal to 6 characters?
-puts "key-value pairs have a key that has a length less than or equal to 6 characters:"
+arr = best_records.select{|k,v| k.size <= 6}
+puts "key-value pairs have a key that has a length less than or equal to 6 characters: #{arr}"
 # * Which key-value pairs have a value that is greater than 10 characters?
-puts "key-value pairs have a key that has a length greater than 10 characters:"
+arr = best_records.select{|k,v| k.size > 10}
+puts "key-value pairs have a key that has a length greater than 10 characters: #{arr}"
