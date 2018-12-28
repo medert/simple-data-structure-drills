@@ -39,16 +39,16 @@ puts "The largest withdrawal is: #{transactions.min}"
 puts "The largest deposit is: #{transactions.max}"
 
 # * What is the smallest withdrawal?
-puts "The smallest withdrawal is:"
+puts "The smallest withdrawal is: #{transactions.select{|word| word < 0}.max}"
 
 # * What is the smallest deposit?
-puts "The smallest deposit is:"
+puts "The smallest deposit is: #{transactions.select{|word| word > 0}.min}"
 
 # * What is the total value of all the transactions?
-puts "The total value of all the transactions is:"
+puts "The total value of all the transactions is: #{transactions.reduce(:+)}"
 
 # * If Dr. Dre's initial balance was $239,900 in this account, what is the value of his balance after his all of the transactions in our transactions array have been run?
-puts "Dr. Dre's balance is:"
+puts "Dr. Dre's balance is: #{239900 + transactions.reduce(:+)}"
 
 best_records = {
  "Tupac"=>"All Eyez on Me",
